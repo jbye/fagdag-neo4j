@@ -1,5 +1,6 @@
 package no.itera.skilldb.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.data.neo4j.annotation.*;
 
 /**
@@ -11,6 +12,7 @@ public class Knows {
     @GraphId
     public Long nodeId;
 
+    @JsonIgnore
     @StartNode
     Person person;
 
