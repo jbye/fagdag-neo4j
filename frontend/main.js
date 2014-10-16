@@ -1,4 +1,4 @@
-var actionUrl = "#";
+var actionUrl = "localhost:8053/beer/api/people";
 
 var dummyData = ["Anders", "Vegard", "Runar"];
 
