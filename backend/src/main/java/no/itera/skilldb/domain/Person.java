@@ -3,6 +3,10 @@ package no.itera.skilldb.domain;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedToVia;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by john.bye on 10/16/14.
@@ -20,6 +24,8 @@ public class Person {
 
     public String lastName;
 
+    @RelatedToVia(type = "KNOWS")
+    Set<Knows> skills = new HashSet<Knows>();
 
     public Person() {
     }
@@ -29,6 +35,9 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public void addSkill(Skill skill) {
+        this.skills.add(new Knows(this, skill));
+    }
 
     public Long getNodeId() {
         return nodeId;
@@ -69,4 +78,11 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public Set<Knows> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Knows> skills) {
+        this.skills = skills;
+    }
 }

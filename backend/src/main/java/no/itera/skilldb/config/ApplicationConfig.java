@@ -10,7 +10,6 @@ import org.springframework.data.neo4j.config.Neo4jConfiguration;
 @EnableNeo4jRepositories("no.itera.skilldb.repositories")
 public class ApplicationConfig extends Neo4jConfiguration {
 
-
     public ApplicationConfig(){
         setBasePackage("no.itera.skilldb.domain");
     }

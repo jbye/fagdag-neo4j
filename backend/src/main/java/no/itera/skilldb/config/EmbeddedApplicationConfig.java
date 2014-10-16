@@ -13,9 +13,7 @@ public class EmbeddedApplicationConfig extends ApplicationConfig {
 
     @Bean
     GraphDatabaseService graphDatabaseService() {
-
         return new GraphDatabaseFactory().newEmbeddedDatabase("tmp/neo4j");
-
     }
 
 }
