@@ -48,10 +48,10 @@ public class PersonController {
     @RequestMapping("/people")
     public
     @ResponseBody
-    String list() {
+    Person list() {
         Gson gson = new Gson();
         Person person = personRepository.findByFirstName("John");
-        return gson.toJson(person);
+        return person;
     }
 
 }
