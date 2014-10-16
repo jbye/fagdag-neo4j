@@ -1,6 +1,5 @@
 package no.itera.skilldb.config;
 
-import com.sun.jersey.spi.container.servlet.WebConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -23,6 +22,7 @@ public class Initializer implements WebApplicationInitializer {
         // AnnotationConfigWebApplicationContext to avoid using beans xml files.
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(WebConfig.class);
+        ctx.register(EmbeddedApplicationConfig.class);
 
         // // Manage the lifecycle of the root application context
         servletContext.addListener(new ContextLoaderListener(ctx));
