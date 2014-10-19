@@ -1,5 +1,6 @@
 package no.itera.skilldb.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
@@ -15,6 +16,7 @@ import java.util.Set;
 public class Skill {
 
     @GraphId
+    @JsonIgnore
     public Long nodeId;
 
     @Indexed(unique = true)
@@ -25,8 +27,7 @@ public class Skill {
 
     public String name;
 
-    public Skill() {
-    }
+    public Skill() { }
 
     public Skill(String name) {
         this.name = name;

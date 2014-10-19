@@ -10,6 +10,7 @@ import org.springframework.data.neo4j.annotation.*;
 public class Knows {
 
     @GraphId
+    @JsonIgnore
     public Long nodeId;
 
     @JsonIgnore
