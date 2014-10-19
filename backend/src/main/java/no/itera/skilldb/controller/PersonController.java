@@ -6,15 +6,20 @@ import no.itera.skilldb.domain.Skill;
 import no.itera.skilldb.repositories.PersonRepository;
 import no.itera.skilldb.repositories.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.neo4j.conversion.Result;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.List;
 
 /**
  * Created by john.bye on 10/16/14.
  */
 @Controller
+@RequestMapping("/people")
 public class PersonController {
 
     @Autowired
@@ -23,11 +28,9 @@ public class PersonController {
     SkillRepository skillRepository;
 
     @RequestMapping("/insert")
-    public
+    @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    String insert() {
-        Gson gson = new Gson();
-
+    public String insert() {
         skillRepository.deleteAll();
         personRepository.deleteAll();
 
@@ -44,13 +47,13 @@ public class PersonController {
         return "OK";
     }
 
-    @RequestMapping("/people")
-    public
+    @RequestMapping("")
     @ResponseBody
-    Person list() {
-        Gson gson = new Gson();
-        Person person = personRepository.findByFirstName("John");
-        return person;
+    @Transactional
+    public Iterable<Person> list() {
+        Iterable<Person> result = personRepository.findAll();
+        List<Person> people = Lists.newArrayList(result);
+        return people;
     }
 
 }
