@@ -1,7 +1,6 @@
 package no.itera.skilldb.controller;
 
 import com.google.common.collect.Lists;
-import com.google.gson.Gson;
 import no.itera.skilldb.domain.Person;
 import no.itera.skilldb.domain.Skill;
 import no.itera.skilldb.repositories.PersonRepository;
